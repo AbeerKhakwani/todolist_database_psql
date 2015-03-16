@@ -45,13 +45,15 @@ $app->post("/categories", function() use ($app) {
    });
 
 
-$app->post("/delete", function(){
-    Task::clearAll();
-
+$app->post("/delete_tasks", function() use ($app){
+    Task::deleteAll();
     return $app['twig']->render('/index.html.twig');
-
 });
 
+$app->post("/delete_categories", function() use ($app){
+    Category::deleteAll();
+    return $app['twig']->render('/index.html.twig');
+});
 
 
 
